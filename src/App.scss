@@ -31,3 +31,24 @@ h3{
   }
 
 }
+.book-table{
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px 0;
+
+  th,td{
+    padding: 10px;
+    border: 1px solid #2b5820;
+    text-align: left;
+
+  }
+
+  thead{
+    background-color: #0c1a05;
+  }
+
+  td{
+    color: #b2751b;
+
+  }
+}

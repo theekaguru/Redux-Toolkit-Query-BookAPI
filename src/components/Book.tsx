@@ -39,13 +39,28 @@ export const Book = () => {
 
         <thead>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Book Id</td>
+            <td>Book Title</td>
+            <td>Book Author</td>
+            <td>Book Year</td>
+            <td>Book Genre</td>
+            <td>Action</td>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>The GamersKlan</td>
+            <td>kaguru Prints</td>
+            <td>2025</td>
+            <td>Wanna Game!🔥</td>
+            <td>
+              <button>Delete</button>
+              <button>Update</button>
+            </td>
+
+          </tr>
+        </tbody>
       </table>
 
     </div>
