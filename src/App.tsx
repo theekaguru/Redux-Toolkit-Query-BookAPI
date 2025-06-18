@@ -1,4 +1,5 @@
 import { Book } from './components/Book'
+import'./App.scss'
 
 
 function App() {

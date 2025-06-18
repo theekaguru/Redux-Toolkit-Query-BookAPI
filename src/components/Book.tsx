@@ -35,6 +35,18 @@ export const Book = () => {
         <button type="submit">ADD BOOK</button>
          
       </form>
+      <table className="book-table">
+
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
     </div>
   )
