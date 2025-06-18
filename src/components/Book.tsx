@@ -1,5 +1,6 @@
 import {useForm} from "react-hook-form"
 import { bookApi } from "./features/api/bookApi";
+import {Toaster , toast } from "sonner";
 
 interface BookFormInput{
   bookTitle:string;
@@ -32,6 +33,7 @@ export const Book = () => {
   const onSubmit =async(data:BookFormInput) =>{
     try {
       const res = await addBook(data)
+      toast.success(res?.data.message)
     } catch (error:any) {
       console.error('Error adding:',error)
       
@@ -42,7 +44,7 @@ export const Book = () => {
   const handleDelete = async(bookId:number) =>{
     try {
          const res = await deleteBook(bookId)
-
+         toast.success(res.data.message)
          console.log("🚀~handleDelete ~res:",res)
     } catch (error) {
       
@@ -56,6 +58,7 @@ export const Book = () => {
   
   return (
     <div className='app'>
+      <Toaster richColors position="top-center"/>
       <h3>Book Repository</h3>
 
       <form className='Book-Form' onSubmit={handleSubmit(onSubmit)}>

@@ -6,3 +6,6 @@ pnpm add @reduxjs/toolkit react-redux
 
 //add sass
 pnpm add sass
+
+//add sonner
+pnpm install sonner
