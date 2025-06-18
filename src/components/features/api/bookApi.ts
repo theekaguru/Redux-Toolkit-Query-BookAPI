@@ -7,6 +7,21 @@ export const bookApi = createApi({
         //getALLBooks
         getAllBooks:builder.query({
             query: () => 'books'
+        }),
+
+        //Delete Booke By Id
+        deleteBookById:builder.mutation({
+            query:(bookId) =>({
+                url:`books/${bookId}` ,
+                method:'DELETE'
+            })
+        }),
+        addBook:builder.mutation({
+            query:(AddBookPayLoad) =>({
+                url:'books',
+                method:'POST',
+                body:AddBookPayLoad
+            })
         })
 
     })

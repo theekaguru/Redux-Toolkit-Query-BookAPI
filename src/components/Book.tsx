@@ -22,16 +22,31 @@ export const Book = () => {
   const {register , handleSubmit , reset , formState:{errors}} = useForm<BookFormInput>()
 
   const {data:bookData =[], isLoading} =bookApi.useGetAllBooksQuery({})
+  const [deleteBook] =bookApi.useDeleteBookByIdMutation()
+  const [addBook] =bookApi.useAddBookMutation()
 
  //way 2 const {data:bookData =[], isLoading} =bookApi.endpoints.getAllBooks.useQuery({})
   console.log(bookData)
 
 
-  const onSubmit =() =>{
+  const onSubmit =async(data:BookFormInput) =>{
+    try {
+      const res = await addBook(data)
+    } catch (error:any) {
+      console.error('Error adding:',error)
+      
+    }
 
   }
 
-  const handleDelete = (bookId:number) =>{
+  const handleDelete = async(bookId:number) =>{
+    try {
+         const res = await deleteBook(bookId)
+
+         console.log("🚀~handleDelete ~res:",res)
+    } catch (error) {
+      
+    }
 
   }
   
