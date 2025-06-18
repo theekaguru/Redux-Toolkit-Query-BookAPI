@@ -1,4 +1,5 @@
 import {useForm} from "react-hook-form"
+import { bookApi } from "./features/api/bookApi";
 
 interface BookFormInput{
   bookTitle:string;
@@ -10,6 +11,9 @@ interface BookFormInput{
 
 export const Book = () => {
   const {register , handleSubmit , reset , formState:{errors}} = useForm<BookFormInput>()
+
+  const {data:bookData =[], isLoading} =bookApi.useGetAllBooksQuery({})
+  console.log(bookData)
 
 
   const onSubmit =() =>{
