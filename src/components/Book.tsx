@@ -9,16 +9,36 @@ interface BookFormInput{
  
 }
 
+interface TBook{
+  bookId:number;
+  bookTitle:string;
+  bookAuthor:string;
+  bookYear:number;
+  bookGenre:string;
+
+}
+
 export const Book = () => {
   const {register , handleSubmit , reset , formState:{errors}} = useForm<BookFormInput>()
 
   const {data:bookData =[], isLoading} =bookApi.useGetAllBooksQuery({})
+
+ //way 2 const {data:bookData =[], isLoading} =bookApi.endpoints.getAllBooks.useQuery({})
   console.log(bookData)
 
 
   const onSubmit =() =>{
 
   }
+
+  const handleDelete = (bookId:number) =>{
+
+  }
+  
+  const handleUpdate = () =>{
+    
+  }
+  
   return (
     <div className='app'>
       <h3>Book Repository</h3>
@@ -39,7 +59,17 @@ export const Book = () => {
         <button type="submit">ADD BOOK</button>
          
       </form>
-      <table className="book-table">
+      {
+        isLoading ? (
+          <div className="loading">
+            loading ...
+          </div>
+        ):bookData?.length === 0 ? (
+          <div>
+            No Books Available 🙃🙃
+          </div>
+        ):(
+          <table className="book-table">
 
         <thead>
           <tr>
@@ -52,20 +82,26 @@ export const Book = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>The GamersKlan</td>
-            <td>kaguru Prints</td>
-            <td>2025</td>
-            <td>Wanna Game!🔥</td>
-            <td>
-              <button>Delete</button>
-              <button>Update</button>
-            </td>
-
-          </tr>
+          {/*  remove ststic data and pass the actual data if there */}
+          {
+            bookData ?.map((book:TBook) =>(
+              <tr key={book.bookId}>
+                <td>{book.bookId}</td>
+                <td>{book.bookTitle}</td>
+                <td>{book.bookAuthor}</td>
+                <td>{book.bookYear}</td>
+                <td>{book.bookGenre}</td>
+                <td>
+                  <button onClick={()=>handleDelete(book.bookId)}>Delete</button>
+                  <button onClick={()=>handleUpdate(book)}>Update</button>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
+        )
+      }
 
     </div>
   )
