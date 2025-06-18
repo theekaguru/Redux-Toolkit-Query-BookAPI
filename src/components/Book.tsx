@@ -35,8 +35,8 @@ export const Book = () => {
 
   }
   
-  const handleUpdate = () =>{
-    
+  const handleUpdate = (book) =>{
+
   }
   
   return (
